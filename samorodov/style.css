@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+/* nullstyle */
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;line-height:1;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button::-moz-focus-inner{padding:0;border:0;}
+ul li{list-style: none;}
+img{max-width: 100%; height: auto;}
+/*--------------------*/
+
+:root {
+  font-family: 'Montserrat';
+}
+
+body {
+  background-color: #E5E5E5;
+  position: relative;
+}
+
+.game {
+  background-color: #FFF;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  width: 838px;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.info {
+  background-color: #F9FAFC;
+  border-radius: 20px;
+  width: 350px;
+  padding: 32px;
+}
+
+.info > div + div {
+  margin-top: 20px;
+}
+
+.left-block {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 9px 8px 13px rgba(237, 240, 244, 0.75);
+  padding: 15px;
+  font-size: 14px;
+}
+
+.left-block > * + * {
+margin-top: 16px;
+}
+
+.left-block__title {
+  font-weight: 700;
+
+}
+
+.left-block__text {
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.info__name {
+  display: flex;
+  align-items: center;
+}
+
+.info__image {
+  background-image: url('1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.31);
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+  margin-right: 17px;
+}
+
+.info__title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.info__address__map {
+  display: flex;
+  align-items: center;
+}
+
+.info__address__icon {
+  background-color: #EFF6FB;
+  border-radius: 19px;
+  background-image: url('Vector.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 7px;
+}
+
+.info__address__map__text {
+  font-weight: 400;
+  color: #B0BCC5;
+}
+
+.payment {
+  width: 488px;
+  padding: 51px 47px 45px;
+}
+
+.payment__title {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.payment__information, .payment__prepaid {
+  border-bottom: 1px solid #EBECEF;
+}
+
+.payment__row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.payment__row__left-colum {
+  text-align: left;
+  color: #7B8A95;
+}
+
+.payment__row__right-colum {
+  text-align: right;
+}
+
+.payment__status .payment__row__right-colum {
+  display: flex;
+  align-items: center;
+}
+
+.payment__status .payment__status-icon {
+  background-color: #F8B758;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  margin-right: 5px;
+}
+
+.payment__number-persons a {
+  color: #B0BCC5;
+}
+
+.row-title.payment__row {
+  font-weight: 700;
+}
+
+.row-title.payment__row .payment__row__left-colum {
+  color: #242424;
+}
+
+.row-title.payment__row .payment__row__right-colum {
+  color: #242424;
+}
+
+.payment__prepaid {
+  padding: 45px 0;
+}
+
+.payment__prepaid a{
+  color: #7B8A95;
+  font-size: 14px;
+}
+
+.payment__total {
+  padding-top: 16px;
+}
+
+.payment__total .payment__row {
+  margin-bottom: 25px;
+}
+
+.payment__total__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment__cancel {
+  display: flex;
+  align-items: center;
+}
+
+.payment__cancel-icon {
+  background-image: url('cancel.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #EBECEF;
+  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+  margin-right: 11px;
+}
+
+.payment__cancel-text {
+  font-size: 14px;
+  color: #B0BCC5;
+}
+
+.payment__pay {
+  text-align: right;
+}
+
+.pay-button {
+  background-color: #7161E8;
+  border-radius: 14px;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  width: 168px;
+}

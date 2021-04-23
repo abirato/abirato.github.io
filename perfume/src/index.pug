@@ -1,0 +1,154 @@
+mixin sliderBlock(title)
+  .slider-block
+    .container
+      .slider-block__header
+        .slider-block__header__title= title
+        .slider__controls
+          .slider__control_left.slider__control
+          .slider__control_right.slider__control.slider__control__show
+      .slider-block__body
+        .slider__wrapper
+          if block
+            block
+
+mixin productCard(url, gender= 'woman')
+  .slider__item
+    img(src= url alt='product').slider__item__image
+    .slider__item__title davidoff
+    if gender == 'woman'
+      .slider__item__description Women's Perfume
+    else if gender == 'man'
+      .slider__item__description Men's Perfume
+    .slider__item__price $ 200.00
+
+mixin header-slider-item(title, url, active= false)
+  if active
+    - var classes = 'slider__item active'
+  else 
+    - var classes = 'slider__item'
+  div(class= classes)
+    .item-description
+      .item-title= title
+      .item-subtitle Women's Perfume
+      .item-price $ 250.00
+      button.red-button Buy Now
+    .item-image
+      img(src= url alt='perfume')
+
+mixin banner-block-item(title, active= false)
+  if active
+    - var classes = 'slider__item active'
+  else 
+    - var classes = 'slider__item'
+  div(class= classes)
+    .slider__item__image
+      img(src= require('./images/banner-slider/product_1.png').default alt='perfume')
+    .slider__item__title= title
+    .slider__item__subtitle Marc Jacobs
+    .slider__item__price $ 265.00
+    button.red-button Buy Now
+
+doctype html
+html(lang='ru')
+  head
+    title Perfume
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  body
+    header.header
+      .hamburger-button
+        svg(viewBox= '0 0 100 80' width= '40' height= '40')
+          rect(width= '80' height= '8')
+          rect(y= '25' width= '80' height= '8')
+          rect(y= '50' width= '80' height= '8')
+      .main-block
+        .header__top
+          .logo
+          .header__navigation
+            a(href= '#').login-link login
+            a(href= '#').search-link
+            a(href= '#').cart-link
+        .header-slider
+          .slider__body
+            +header-slider-item('Jasmin Noir_1', require('./images/header-slider/product_1.png').default, true)
+            +header-slider-item('davidoff', require('./images/header-slider/product_2.png').default)
+            +header-slider-item('Jasmin Noir_2', require('./images/header-slider/product_1.png').default)
+            +header-slider-item('Jasmin Noir_3', require('./images/header-slider/product_1.png').default)
+          .slider__paginators
+      .drop-menu
+        .drop-menu__items
+          each val in ['Home', 'About Us', "Men's Perfume", "Women's Perfume", 'Top Seller', 'Gift Pack', 'Brands', 'Contact us']
+            a(href= '#').drop-menu__item
+              .drop-menu__item__text= val
+              .drop-menu__item__drop-underline
+    +sliderBlock('Best Seller in Fragrance')
+      +productCard(require('./images/products/product_1.png').default)
+      +productCard(require('./images/products/product_2.png').default, 'man')
+      +productCard(require('./images/products/product_3.png').default, 'man')
+      +productCard(require('./images/products/product_4.png').default)
+      +productCard(require('./images/products/product_5.png').default, 'man')
+      +productCard(require('./images/products/product_2.png').default, 'man')
+      +productCard(require('./images/products/product_4.png').default, 'man')
+    .banner-block
+      .container
+        .banner-block__discount
+          .banner-block__discount__circle 
+            p.circle__top 50% 
+            p.circle__bottom Off
+          .banner-block__discount__text 
+            span.mobile 50% off 
+            | on Women's Perfumes
+        .banner-block__slider
+          .slider__body
+            +banner-block-item('DAISY_1', true)
+            +banner-block-item('DAISY_2')
+            +banner-block-item('DAISY_3')
+            +banner-block-item('DAISY_4')
+          .slider__paginators
+    +sliderBlock('TOP SELLERS FOR WOMEN')
+      +productCard(require('./images/products/product_6.png').default)
+      +productCard(require('./images/products/product_7.png').default)
+      +productCard(require('./images/products/product_8.png').default)
+      +productCard(require('./images/products/product_9.png').default)
+      +productCard(require('./images/products/product_10.png').default)
+      +productCard(require('./images/products/product_5.png').default)
+      +productCard(require('./images/products/product_6.png').default)
+    +sliderBlock('TOP SELLERS FOR MEN')
+      +productCard(require('./images/products/product_11.png').default, 'man')
+      +productCard(require('./images/products/product_12.png').default, 'man')
+      +productCard(require('./images/products/product_13.png').default, 'man')
+      +productCard(require('./images/products/product_14.png').default, 'man')
+      +productCard(require('./images/products/product_15.png').default, 'man')
+      +productCard(require('./images/products/product_11.png').default, 'man')
+      +productCard(require('./images/products/product_1.png').default, 'man')
+    .feedback-block
+      .container
+        .feedback-block__title Stay update with latest perfume and discounts
+        input(placeholder= 'Enter Your Email Id').feedback-block__form
+        button.red-button Subscribe Now
+    footer.footer
+      .container
+        .footer__column
+          .footer__column__title Product Categories
+          .footer__column__links
+            each val in ['Fragrance', 'Mens', 'Make Up', 'Skin Care', 'Sun & Tan', 'Bath & Body', 'Hair', 'Gifts', 'Special Offers', 'Brand A-Z']
+              a(href= '#').footer__column__link= val
+        .footer__column
+          .footer__column__title Shopping With Us
+          .footer__column__links
+            each val in ['About Us', 'My Account', 'FAQs', 'Gift Wrapping', 'Gift Certificate']
+              a(href= '#').footer__column__link= val
+        .footer__column
+          .footer__column__title Customer Service
+          .footer__column__links
+            each val in ['Delivery Information', 'CollectPlus', 'Returns Policy', 'Help', 'Security & Cookies', 'Sitemap', 'Terms & Conditions']
+              a(href= '#').footer__column__link= val
+        .footer__column
+          .footer__column__title Contact Us
+          .footer__column__links
+            each val in ['Addresss .............', 'Phone ........', 'Email............']
+              a(href= '#').footer__column__link= val
+          .footer__column__title Social Connect
+          .footer__column__social
+            .social-icon.icon-fb
+            .social-icon.icon-tw
+            .social-icon.icon-in

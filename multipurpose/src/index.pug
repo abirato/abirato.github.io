@@ -1,0 +1,221 @@
+mixin blockCard(title, slider = false, categories = false)
+  div.block-card
+    div.block-card__header
+      div.block-card__title= title
+      if categories
+        ul.block-card__categories
+          each val in ['All',	'Clothing', 'Electronics',	'Shoes']
+            li
+              a(href='#')= val
+      if slider
+        div.slider__controls
+          div.slider__control_left.slider__control
+          div.slider__control_right.slider__control.slider__control__show
+    div.block-card__body
+      if slider
+        div.slider__wrapper
+          if block
+            block
+      else
+        if block
+          block
+          
+mixin productCard(url)
+  div.product-card
+    div.product-card__image
+      img(src= url alt='product')
+    p.product-card__title Lorem ipsum dolor
+    div.product-card__price
+      p.product-card__price-old $100.00	
+      p.product-card__price-new $90.00 
+    div.stars-rating
+      each val in [1,	2, 3,	4]
+        div.star-rating.rated
+      div.star-rating
+      
+mixin productCardVert(url1, url2)
+  div.product-cards-vert
+    div.product-card-vert
+      div.product-card-vert__image
+        img(src= url1 alt='product')
+      div.product-card-vert__info
+        p.product-card-vert__title Lorem ipsum dolor
+        div.product-card-vert__price
+          p.product-card-vert__price-old $100.00	
+          p.product-card-vert__price-new $90.00 
+        div.stars-rating
+          each val in [1,	2, 3,	4]
+            div.star-rating.rated
+          div.star-rating
+    div.product-card-vert
+      div.product-card-vert__image
+        img(src= url2 alt='product')
+      div.product-card-vert__info
+        p.product-card-vert__title Lorem ipsum dolor
+        div.product-card-vert__price
+          p.product-card-vert__price-old $100.00	
+          p.product-card-vert__price-new $90.00 
+        div.stars-rating
+          each val in [1,	2, 3,	4]
+            div.star-rating.rated
+          div.star-rating
+
+doctype html
+html(lang='ru')
+  head
+    title Multipurpose
+  body
+    header.header
+      div.container
+        div.header__logo
+        div.header__navigation
+          ul.header__menu
+            each val in ['My Account','Wishlist','My Cart', 'Checkout', 'Login']
+              li
+                a(href='#')= val
+          div.header__nav-bottom
+            div.header__search
+              input(placeholder='Search here...').header__search-input
+              button.header__search-button 
+            div.header__cart
+              a(href='#')
+                div.header__cart-icon
+                div.header__cart-text
+                  p.header__cart-total Total
+                  p.header__cart-sum $600.00
+    div.header-menu
+      div.container
+        a(id='menu-button' class='header-menu__button' href='#') 
+          span.header-menu__button-icon 
+          p.header-menu__button__text Categories
+        ul.header-menu__list
+          each val in ['Clothing','Electronics hot','Health & Beauty', 'Watches', 'Jewellery','Shoes']
+            li
+              a(href='#')= val
+    div.blog
+      div.container
+        div.sidebar
+          ul.drop-menu-categories
+            each val in ['Clothing', 'Electronics', 'Shoes', 'Watches', 'Jewellery', 'Health and Beauty', 'Kids and Babies', 'Sports', 'Home and Garden']
+              li
+                a(href='#')
+                  div.drop-menu-categories__icon
+                  p.drop-menu-categories__text= val
+          +blockCard('Hot Deals', true)
+            +productCard(require('./images/products/product_1.png').default)
+            +productCard(require('./images/products/product_2.png').default)
+          +blockCard('Special Deal', true)
+            +productCard(require('./images/products/product_2.png').default)
+            +productCard(require('./images/products/product_1.png').default)
+          +blockCard('Newsletters')
+            p.sidebar__newsletters-title Sign Up for Our Newsletter!
+            input.sidebar__newsletters-input
+            button.sidebar__newsletters-button sUBSCRIBE
+          div.sidebar__banner
+            img(src= require('./images/banners/ad_1.png').default alt='banner')
+        main.main
+          div.main__banner
+            div.banner-body
+              div.banner-body__text
+                p.first-row COLLECTION 2016
+                p.second-row save 50% for
+                p.third-row FIRST PURCHASE
+                button.banner-body__button Shop Now
+            div.banner-footer
+              div.banner-footer__column
+                p.banner-footer__title money back
+                p.banner-footer__text 30 Days Money Back Guarantee
+              div.banner-footer__column
+                p.banner-footer__title free shipping
+                p.banner-footer__text Shipping on orders over $99
+              div.banner-footer__column
+                p.banner-footer__title Special Sale 
+                p.banner-footer__text Extra $5 off on all items
+          +blockCard('New Products', true, true)
+            +productCard(require('./images/products/product_3.png').default)
+            +productCard(require('./images/products/product_4.png').default)
+            +productCard(require('./images/products/product_5.png').default)
+            +productCard(require('./images/products/product_6.png').default)
+            +productCard(require('./images/products/product_10.png').default)
+          +blockCard('Latest Products', true, true)
+            +productCard(require('./images/products/product_7.png').default)
+            +productCard(require('./images/products/product_8.png').default)
+            +productCard(require('./images/products/product_9.png').default)
+            +productCard(require('./images/products/product_10.png').default)
+            +productCard(require('./images/products/product_4.png').default)
+          div.banner-macbook
+            div.banner-macbook__body
+              p.first-row Beautiful Laptop
+              p.second-row Retina Display 18” Ready !
+              button.banner-macbook__button Shop Now
+          +blockCard('Featured products', true)
+            +productCardVert(require('./images/products/productver_1.png').default, require('./images/products/productver_2.png').default)
+            +productCardVert(require('./images/products/productver_3.png').default, require('./images/products/productver_4.png').default)
+            +productCardVert(require('./images/products/productver_5.png').default, require('./images/products/productver_6.png').default)
+            +productCardVert(require('./images/products/productver_2.png').default, require('./images/products/productver_4.png').default)
+    footer.footer
+      div.container
+        div.first-column
+          div.footer__logo
+          p.footer__description This is Photoshop's version of Lorem Ipsum. Proin gravida nibh velit it’s a cold world out there.
+          div.footer__contacts
+            div.footer__row
+              div.footer__icon.icon-address
+              p.footer__text 0123  Main Road, Your City, NY 123456
+            div.footer__row
+              div.footer__icon.icon-phone
+              p.footer__text (000) 2345 - 6789
+            div.footer__row
+              div.footer__icon.icon-email
+              p.footer__text info@psdfreebies.com
+        div.second-column
+          p.footer__title Information
+          ul.footer__information-list
+            each val in ['Our Story', 'Privacy & Policy', 'Terms & Conditions', 'Shipping & Delivery', 'Careers', 'FAQs']
+              li
+                a(href='#')= val
+        div.third-column
+          p.footer__title Our Social
+          div.footer__social
+            div.footer__row
+              div.footer__icon.icon-google
+              p.footer__text Google+
+            div.footer__row
+              div.footer__icon.icon-facebook
+              p.footer__text Facebook
+            div.footer__row
+              div.footer__icon.icon-pinterest
+              p.footer__text Pinterest
+            div.footer__row
+              div.footer__icon.icon-twitter
+              p.footer__text Twitter
+            div.footer__row
+              div.footer__icon.icon-vimeo
+              p.footer__text Vimeo
+            div.footer__row
+              div.footer__icon.icon-rss
+              p.footer__text RSS
+            div.footer__row
+              div.footer__icon.icon-instagram
+              p.footer__text Instagram
+            div.footer__row
+              div.footer__icon.icon-youtube
+              p.footer__text YouTube
+        div.fourth-column
+          p.footer__title Opening Time
+          div.footer__office-hours
+            div.footer__row
+              div.footer__icon.icon-clock
+              p.footer__text Monday - Friday: 08:30 am - 09:30 pm
+            div.footer__row
+              div.footer__icon
+              p.footer__text Sat - Sun: 09:00 am - 10:00 pm
+          p.footer__title Payment Option
+          div.footer__payment-icons
+            img(src= require('./images/icons/payment/1.png').default alt='pay')
+            img(src= require('./images/icons/payment/2.png').default alt='pay')
+            img(src= require('./images/icons/payment/3.png').default alt='pay')
+            img(src= require('./images/icons/payment/4.png').default alt='pay')
+            img(src= require('./images/icons/payment/5.png').default alt='pay')
+            img(src= require('./images/icons/payment/6.png').default alt='pay')
+            img(src= require('./images/icons/payment/7.png').default alt='pay')

@@ -1,0 +1,315 @@
+mixin projects-slider()
+  .projects-slider__wrapper
+    if block
+      block
+  .projects-slider__controls
+    .projects-slider__controls_left.projects-slider__control
+    .projects-slider__paginators
+    .projects-slider__controls_right.projects-slider__control.projects-slider__control__show
+    
+mixin projects-slider-item(url)
+  .projects-slider__wrapper__item
+    .projects-slider__wrapper__item__image
+      img(src= url alt='item')
+    .projects-slider__wrapper__item__title Проект Дома Навека 1
+    .projects-slider__wrapper__item__description
+      p.projects-slider__wrapper__item__square Площадь: 102 м2
+      p.projects-slider__wrapper__item__sizes Размеры: 10х23х5
+    button.gradient-button Подробнее о проекте
+
+doctype html
+html(lang='ru')
+  head
+    title doma
+    meta(charset="UTF-8")
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  body
+    .loaded-screen
+      p.loaded-screen__text страница загружается...
+    header.header
+      .container
+        .logo
+          .logo__image
+          .logo__text
+            span Дома
+            |Навека
+        .timetable
+          span с 9:00 до 21:00<br>
+          |без выходных
+        .contacts
+          .contacts__phone
+            |Есть вопросы? Звоните!<br>
+            span +7 (495) 204-23-76
+          button.gradient-button Заказать звонок
+    section.hero
+      .container
+        .hero__left._animation
+          .hero__left__top
+            .hero__left__title Строим Дома
+            .hero__left__subtitle из бетона, кирпича, поризованных<br>блоков и пеноблоков
+            .hero__left__place в Москве и МО&#160;<br>с гарантией 20 лет
+          .hero__left__bottom
+            .hero__left__advantage У нас 7 бригад&#160;<br>строителей
+            .hero__left__advantage Опыт работы&#160;<br>19 лет
+            .hero__left__advantage Создаем дома&#160;<br>"под ключ",
+              .hero__left__advantage__subtext реконструируем&#160;<br>или достраиваем
+        .hero__right._animation
+          .hero__form
+            .hero__form__title Бесплатно составим<br>смету на строительство<br>вашего дома уже сегодня!
+            input(type='text' placeholder='Ваше имя').input-text
+            input(type='text' placeholder='Ваш телефон').input-text
+            button.gradient-button Заказать смету
+    section.projects-slider
+      .container
+        h2.container__title._animation У нас есть уже готовые проекты
+        .projects-slider__tabs
+          .projects-slider__tabs__buttons._animation
+            .projects-slider__tabs__selection
+            button.projects-slider__tabs__btn Эконом
+            button.projects-slider__tabs__btn средний
+            button.projects-slider__tabs__btn премиум
+          .projects-slider__tabs__content._animation
+            .projects-slider__tabs__item.is-active
+              +projects-slider()
+                +projects-slider-item(require('./images/projects-slider/houses/home-1.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-1.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-1.png').default)
+                
+                +projects-slider-item(require('./images/projects-slider/houses/home-1.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-1.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-1.png').default)
+            .projects-slider__tabs__item
+              +projects-slider()
+                +projects-slider-item(require('./images/projects-slider/houses/home-2.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-2.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-2.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-2.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-2.png').default)
+            .projects-slider__tabs__item
+              +projects-slider()
+                +projects-slider-item(require('./images/projects-slider/houses/home-3.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-3.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-3.png').default)
+                +projects-slider-item(require('./images/projects-slider/houses/home-3.png').default)
+    section.catalog
+      .container
+        h2.container__title._animation Мы построим Вам дом по индивидуальному плану&#160;<br>разработанному в нашем проектном бюро
+        p.catalog__text._animation За 19 лет мы разработали более 500 индивидуальных проектов
+        .slider._animation
+          .slider__wrapper
+            .slider__item
+              img(src=require('./images/catalog/items/1.png').default alt='item') 
+            .slider__item
+              img(src=require('./images/catalog/items/2.png').default alt='item') 
+            .slider__item
+              img(src=require('./images/catalog/items/3.png').default alt='item') 
+            .slider__item
+              img(src=require('./images/catalog/items/6.png').default alt='item') 
+          .slider__control_left.slider__control
+          .slider__control_right.slider__control.slider__control__show
+        p.catalog__text._animation Мы разрабатываем оригинальные, конструктивно сложные проекты и реализуем их
+        .slider._animation
+          .slider__wrapper
+            .slider__item
+              img(src=require('./images/catalog/items/4.png').default alt='item') 
+            .slider__item
+              img(src=require('./images/catalog/items/5.png').default alt='item') 
+            .slider__item
+              img(src=require('./images/catalog/items/6.png').default alt='item') 
+            .slider__item
+              img(src=require('./images/catalog/items/1.png').default alt='item') 
+          .slider__control_left.slider__control
+          .slider__control_right.slider__control.slider__control__show
+        .catalog__form._animation
+          .catalog__form__title Мы готовы разработать для Вас индивидуальный проект дома по Вашим пожеланиям&#160;<br>Либо использовать для строительства Ваш собственный проект
+          .catalog__form__text Заполните форму ниже - мы свяжемся с Вами для обсуждения деталей проекта
+          .catalog__form__inputs
+            input(type='text' placeholder='Ваше Имя').input-text
+            input(type='text' placeholder='Ваш телефон').input-text
+            button.gradient-button Заказать<br>обратный звонок
+    section.helptip
+      .container
+        h2.container__title._animation Гарантия 20 лет на качество строительства дома&#160;<br>прописана в договоре
+        .helptip__text._animation Мы контролируем процесс строительства на каждом этапе<br>от его начала до момента сдачи объекта заказчику
+        .helptip__body._animation
+          .helptip__wrapper
+            .helptip__item.helptip__item-right
+              .helptip__item__circle
+              .helptip__item__line
+              .helptip__item__text 
+                p.helptip__item__title Дымоход
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .helptip__item.helptip__item-left
+              .helptip__item__text 
+                p.helptip__item__title Утепление потолка
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              .helptip__item__line
+              .helptip__item__circle
+            .helptip__item.helptip__item-right
+              .helptip__item__circle
+              .helptip__item__line
+              .helptip__item__text 
+                p.helptip__item__title Кровля
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .helptip__item.helptip__item-left
+              .helptip__item__text 
+                p.helptip__item__title Дверной проем
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              .helptip__item__line
+              .helptip__item__circle
+            .helptip__item.helptip__item-right
+              .helptip__item__circle
+              .helptip__item__line
+              .helptip__item__text 
+                p.helptip__item__title Оконный проем
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .helptip__item.helptip__item-left
+              .helptip__item__text 
+                p.helptip__item__title Утепление пола
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              .helptip__item__line
+              .helptip__item__circle
+            .helptip__item.helptip__item-right
+              .helptip__item__circle
+              .helptip__item__line
+              .helptip__item__text 
+                p.helptip__item__title Утепление стен
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .helptip__item.helptip__item-left
+              .helptip__item__text
+                p.helptip__item__title Фундамент
+                .helptip__item__tip Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              .helptip__item__line
+              .helptip__item__circle
+    section.materials
+      .container
+        h2.container__title._animation Мы построим для Вас дом&#160;<br>из выбранного Вами материала
+        .slider._animation
+          .slider__wrapper
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/materials/1.png').default alt='item') 
+              .slider__item__title из бетона
+              .slider__item__link Подробнее
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/materials/2.png').default alt='item') 
+              .slider__item__title из кирпича
+              .slider__item__link Подробнее
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/materials/3.png').default alt='item') 
+              .slider__item__title из поризованных блоков
+              .slider__item__link Подробнее
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/materials/4.png').default alt='item') 
+              .slider__item__title пеноблоков
+              .slider__item__link Подробнее
+          .slider__control_left.slider__control
+          .slider__control_right.slider__control.slider__control__show
+    section.advantage
+      .container
+        h2.container__title._animation Мы всегда укладываемся в сроки&#160;<br>прописанные в договоре на строительство
+        .advantage__body
+          .advantage__item._animation
+            .advantage__item__image
+              img(src=require('./images/advantage/1.png').default alt='item') 
+            .advantage__item__text
+              .advantage__item__title Мы используем современную технику и инструмент при производстве работ
+              .advantage__item__subtitle Это в разы сокращает сроки строительства
+          .advantage__item._animation
+            .advantage__item__image
+              img(src=require('./images/advantage/2.png').default alt='item') 
+            .advantage__item__text
+              .advantage__item__title У нас в штате 7 бригад опытных специалистов своего дела
+              .advantage__item__subtitle Мы имеем конкурентное преимущество в качестве выполняемых работ
+          .advantage__item._animation
+            .advantage__item__image
+              img(src=require('./images/advantage/3.png').default alt='item') 
+            .advantage__item__text
+              .advantage__item__title Отдел технического контроля нашей компании проверяет каждый этап строительства
+              .advantage__item__subtitle Это позволяет исключить производственный брак на каждом этапе строительства
+    section.qualification
+      .container
+        h2.container__title._animation Все сотрудники в нашем штате&#160;<br>имеют высшее инженерно-строительное образование
+        .qualification__body._animation
+          .qualification__video
+            .qualification__video__player
+              img(src=require('./images/qualification/video.png').default alt='item') 
+          .qualification__description
+            .qualification__title Евтушенко Дмитрий
+            .qualification__subtitle Генеральный директор<br>ООО "Дома Навека"
+            .qualification__text Вы можете напрямую связаться<br>с директором по телефону:
+            .qualification__phone  +7 (495) 204-23-76
+    section.staff
+      .container
+        h2.container__title._animation Ключевые лица нашей компании
+        .slider._animation
+          .slider__wrapper
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/staff/1.png').default alt='item') 
+              .slider__item__title Григорян Алексей
+              .slider__item__subtitle Главный инженер
+              .slider__item__description
+                .slider__item__description__text Образование - БГТУ.
+                .slider__item__description__text Стаж с 2004 года.
+                .slider__item__description__text Принимал участие в проектировании и монтаже более 200 объектов в России и за рубежом.
+                .slider__item__description__text Внештатный консультант пяти действующих строительных компаний Москвы
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/staff/1.png').default alt='item') 
+              .slider__item__title Григорян Алексей
+              .slider__item__subtitle Главный инженер
+              .slider__item__description
+                .slider__item__description__text Образование - БГТУ.
+                .slider__item__description__text Стаж с 2004 года.
+                .slider__item__description__text Принимал участие в проектировании и монтаже более 200 объектов в России и за рубежом.
+                .slider__item__description__text Внештатный консультант пяти действующих строительных компаний Москвы
+            .slider__item
+              .slider__item__image
+                img(src=require('./images/staff/1.png').default alt='item') 
+              .slider__item__title Григорян Алексей
+              .slider__item__subtitle Главный инженер
+              .slider__item__description
+                .slider__item__description__text Образование - БГТУ.
+                .slider__item__description__text Стаж с 2004 года.
+                .slider__item__description__text Принимал участие в проектировании и монтаже более 200 объектов в России и за рубежом.
+                .slider__item__description__text Внештатный консультант пяти действующих строительных компаний Москвы
+          .slider__control_left.slider__control
+          .slider__control_right.slider__control.slider__control__show
+    section.faq
+      .container
+        h2.container__title._animation Часто задаваемые вопросы
+        .faq__title На Ваши вопросы ответит Евтушенко Дмитрий
+        ol.faq__list
+          each val in ['Как заказать деталь правильно?', 'Что делать, если запчасть не понадобилась?', 'Как долго доставляется деталь?', 'Можете ли Вы установить деталь?', 'Какой транспортной компанией доставляется деталь?','Как долго доставляется деталь?', 'Что делать, если запчасть не понадобилась?']
+            li.faq__item._animation= val
+    section.callback
+      .container
+        .callback__title._animation Вы не нашли ответа на свой вопрос? Наши специалисты дадут&#160;<br>Вам профессиональную консультацию абсолютно бесплатно!
+        .callback__subtitle._animation Для этого оставьте свой номер телефона в форме ниже - мы перезвоним Вам в течение 3 минут
+        .callback__form._animation
+          input(placeholder='Ваше Имя').input-text
+          input(placeholder='Ваш телефон').input-text
+          button.gradient-button Получить бесплатную<br>консультацию
+        .callback__text Или Вы можете перезвонить нам сами по телефону: 
+          span.callback__text__phone +7 (495) 204-23-76
+    section.map
+      .container._animation
+        .map__yandex
+        .map__contact
+          .map__title Мы можем показать Вам еще больше проектов у нас в офисе!
+          .map__text Приезжайте к нам в гости по адресу:
+          .map__address МКАД 51 км. ТВК “Элит Строй Материалы” павильон L23
+          .map__phone Звоните прямо сейчас: 
+            span.map__phone-number +7 (495) 204-23-76
+          .map__schedule с 9:00 до 21:00 без выходных
+    footer.footer
+      .container
+        .logo
+          .logo__image
+          .logo__text
+            span Дома
+            |Навека

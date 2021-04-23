@@ -1,0 +1,422 @@
+html
+  font-size: 16px
+  font-family: 'segoeui'
+
+body
+  background-color: #f3f3f3
+
+a
+  color: #fff
+  text-decoration: none
+  &:visited
+    color: #fff
+
+=bgimage($url, $position: false)
+  background-image: url($url)
+  background-repeat: no-repeat
+  @if $position
+    background-position: bottom
+  @else
+    background-position: center
+
+.container
+  max-width: 82rem
+  width: 100%
+  margin: 0 auto
+  padding: 0 1rem
+
+.red-button
+  background-color: transparent
+  border: 1px solid #c54d4d
+  border-radius: 2rem
+  color: #c54d4d
+  font-weight: 600
+  font-size: 1rem
+  padding: .7rem 1.875rem
+  text-transform: uppercase
+
+.slider__paginators
+  display: flex
+  justify-content: center
+  .slider-paginator
+    background-color: #313131
+    border-radius: 50%
+    cursor: pointer
+    width: .5rem
+    height: .5rem
+    + .slider-paginator
+      margin-left: .3rem
+  .slider-paginator.active
+    background-color: #c44c4c
+
+.header
+  display: flex
+  position: relative
+  &.menu-open
+    .drop-menu
+      width: 100%
+      &__items
+        display: flex
+  .main-block
+    padding: 1rem
+    @media screen and (min-width: 40.625rem)
+      padding: 2.2rem
+    +bgimage('../images/header-bg.png')
+    background-size: cover
+    width: 100%
+    .header__top
+      align-items: center
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+      .logo
+        +bgimage('../images/logo.png')
+        width: 11.125rem
+        height: 2.4375rem
+        margin-bottom: .8rem
+        margin-right: 1rem
+      .header__navigation
+        margin-right: 3rem
+        display: flex
+        a
+          display: block
+          + a
+            margin-left: 1rem
+        .login-link
+          font-weight: 300
+          text-transform: uppercase
+          color: #636262
+        .search-link
+          +bgimage('../images/icons/search-icon.png')
+          background-size: contain
+          width: 1rem
+          height: 1rem
+        .cart-link
+          +bgimage('../images/icons/cart-icon.png')
+          background-size: contain
+          width: 1rem
+          height: 1rem
+    .header-slider
+      .slider__body
+        padding: 8.9rem .4rem 8.9rem
+        @media screen and (min-width: 40.625rem)
+          padding: 8.9rem 0 8.9rem 2.375rem
+        .slider__item
+          display: none
+          &.active
+            align-items: center
+            display: flex
+            flex-direction: column
+            @media screen and (min-width: 26.5625rem)
+              flex-direction: row
+          .item-description
+            order: 1
+            margin-top: 1rem
+            @media screen and (min-width: 26.5625rem)
+              order: 0
+              margin-top: 0
+            @media screen and (min-width: 40.625rem)
+              animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+            .item-title
+              font-weight: 300
+              font-size: 2.14rem
+              text-transform: uppercase
+              margin-bottom: 0.875rem
+            .item-subtitle
+              font-weight: 200
+              font-size: .874rem
+              text-transform: uppercase
+              margin-bottom: 1.9rem
+            .item-price
+              font-weight: 600
+              margin-bottom: 1.9rem
+          .item-image
+            @media screen and (min-width: 40.625rem)
+              animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+  .drop-menu
+    +bgimage('../images/bg-menu.png')
+    background-size: cover
+    width: 0%
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    @media screen and (min-width: 40.625rem)
+      max-width: 25.3125rem
+    &__items
+      display: none
+      flex-wrap: wrap
+      align-content: center
+      min-height: 100%
+      .drop-menu__item
+        margin: 3.5rem 0
+        width: 50%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        &__text
+          font-weight: 400
+          text-transform: uppercase
+          text-align: center
+        &__drop-underline
+          width: 1.5rem
+          height: 1rem
+          background-image: linear-gradient(#c44c4c, #c44c4c)
+          background-size: 0 .3rem, auto
+          background-repeat: no-repeat
+          background-position: center bottom
+          transition: all .2s ease-out
+        &:hover
+          .drop-menu__item__drop-underline
+            background-size: 100% .3rem, auto
+  .hamburger-button
+    cursor: pointer
+    position: absolute
+    width: 2.4rem
+    height: 2.4rem
+    right: 1rem
+    top: 1.5rem
+    @media screen and (min-width: 40.625rem)
+      top: 2.8rem
+    z-index: 100
+    svg
+      rect
+        fill: #c44c4c
+
+.slider-block
+  background-color: #fff
+  padding: 2.5rem 0
+  &__header
+    display: flex
+    justify-content: space-between
+    &__title
+      color: #4d4d4d
+      font-size: 1.74rem
+      font-weight: 400
+      text-transform: uppercase
+    .slider__controls
+      display: flex
+      .slider__control
+        cursor: pointer
+        opacity: .6
+        height: 2.5rem
+        width: 1.4rem
+        user-select: none
+      .slider__control_left
+        +bgimage('../images/icons/left-arrow.png')
+        margin-right: 1.1rem
+      .slider__control_right
+        +bgimage('../images/icons/right-arrow.png')
+      .slider__control__show
+        opacity: 1
+  &__body
+    padding-top: 3.125rem
+    overflow: hidden
+    .slider__wrapper
+      display: flex
+      align-items: flex-end
+      transition: transform 0.6s ease
+      padding: 0 -.5rem
+      .slider__item
+        align-items: center
+        display: flex
+        flex-direction: column
+        font-weight: 600
+        justify-content: flex-end
+        text-transform: uppercase
+        padding: 0 .5rem
+        flex: 0 0 100%
+        @media screen and (min-width: 30rem)
+          flex: 0 0 50%
+        @media screen and (min-width: 40.625rem)
+          flex: 0 0 33.3333333%
+        @media screen and (min-width: 56.25rem)
+          flex: 0 0 25%
+        @media screen and (min-width: 65.625rem)
+          flex: 0 0 20%
+        &__image
+          margin-bottom: 2rem
+        &__title
+          color: #494949
+          margin-bottom: .875rem
+        &__description
+          color: #9f9f9f
+          margin-bottom: .875rem
+        &__price
+          color: #c44c4c
+
+.banner-block
+  +bgimage('../images/banner-bg.png')
+  background-size: cover
+  text-transform: uppercase
+  padding: 4.1875rem 0
+  .container
+    align-items: center
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    @media screen and (min-width: 48.75rem)
+      flex-direction: row
+  &__discount
+    margin-bottom: 1rem
+    @media screen and (min-width: 48.75rem)
+      margin-bottom: 0
+    &__circle
+      align-items: center
+      background-color: #eaeaea
+      box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.15)
+      border-radius: 50%
+      color: #c44c4c
+      display: none
+      font-weight: 600
+      font-style: italic
+      flex-direction: column
+      justify-content: center
+      width: 10.3rem
+      height: 10.3rem
+      .circle__top
+        font-size: 3.5rem
+      .circle__bottom
+        font-size: 2.5rem
+      @media screen and (min-width: 48.75rem)
+        display: flex
+    &__text
+      font-size: 2rem
+      font-weight: 600
+      font-style: italic
+      color: #fff
+      text-align: center
+      @media screen and (min-width: 48.75rem)
+        font-size: 3rem
+        margin: -1rem 0 0 8.5rem
+        text-align: left
+        .mobile
+          display: none
+  &__slider
+    background-color: #fff
+    box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.15)
+    flex: none
+    max-width: 23.125rem
+    width: 100%
+    padding: 1.5rem 0
+    .slider__body
+      margin-bottom: 2.6rem
+      overflow: hidden
+      .slider__item
+        display: none
+        &.active
+          align-items: center
+          display: flex
+          justify-content: center
+          flex-direction: column
+          animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+        &__image
+          margin-bottom: .3rem
+        &__title
+          font-weight: 600
+          font-size: 1.9rem
+          color: #434343
+          margin-bottom: .5rem
+        &__subtitle
+          font-weight: 400
+          font-size: .7rem
+          color: #969494
+          margin-bottom: 1rem
+        &__price
+          font-weight: 600
+          font-size: 1.4rem
+          color: #acacac
+          margin-bottom: 1.2rem
+        @media screen and (min-width: 26.5625rem)
+          &__image
+            margin-bottom: 1.5rem
+          &__title
+            margin-bottom: .875rem
+          &__subtitle
+            margin-bottom: 2rem
+          &__price
+            margin-bottom: 1.625rem
+
+.feedback-block
+  +bgimage('../images/feedback-bg.png')
+  background-size: cover
+  text-transform: uppercase
+  padding: 9.25rem 0 7.81rem
+  .container
+    align-items: center
+    display: flex
+    flex-direction: column
+    justify-content: center
+  &__title
+    color: #2f2f2f
+    font-size: 1.5rem
+    text-align: center
+    margin-bottom: 3.375rem
+    @media screen and (min-width: 30rem)
+      font-size: 2rem
+  &__form
+    border: 1px solid #a5a5a5
+    padding: 1rem .8rem
+    max-width: 29.375rem
+    width: 100%
+    margin-bottom: 2.125rem
+    &::placeholder
+      color: #a5a5a5
+
+.footer
+  background-color: #2b2c30
+  padding: 3.625rem 0
+  .container
+    display: flex
+    justify-content: space-around
+    flex-wrap: wrap
+  &__column
+    margin-bottom: 1rem
+    padding: 0 .5rem
+    width: 100%
+    @media screen and (min-width: 26.5625rem)
+      width: 50%
+    @media screen and (min-width: 38.3333333rem)
+      width: auto
+    &:last-child
+      .footer__column__links
+        margin-bottom: 2rem
+    &__title
+      color: #fff
+      text-transform: uppercase
+      font-family: 'din'
+      font-weight: bold
+      margin-bottom: 1.75rem
+    &__links
+      .footer__column__link
+        + .footer__column__link
+          margin-top: 0.6875rem
+    a
+      display: block
+      color: #888888
+      font-family: 'din'
+      font-weight: 300
+      &:hover
+        color: #fff
+    &__social
+      display: flex
+      align-items: flex-end
+      .social-icon
+        cursor: pointer
+        width: 1.375rem
+        height: 1.375rem
+        + .social-icon
+          margin-left: .75rem
+      .icon-fb
+        +bgimage('../images/icons/fb.png', 'bottom')
+        &:hover
+          +bgimage('../images/icons/fb-hover.png', 'bottom')
+      .icon-tw
+        +bgimage('../images/icons/tw.png', 'bottom')
+        &:hover
+          +bgimage('../images/icons/tw-hover.png', 'bottom')
+      .icon-in
+        +bgimage('../images/icons/in.png', 'bottom')
+        &:hover
+          +bgimage('../images/icons/in-hover.png', 'bottom')

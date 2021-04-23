@@ -1,0 +1,480 @@
+mixin container(title)
+  .container
+    .container__header._animation
+      .container__title= title
+      .container__line
+    if block
+      block
+
+mixin autoSlider(mainImage, imagesList)
+  .auto-slider._animation
+    div(class='auto-slider__body' style=`background-image: url("${mainImage}")` data-images= imagesList) 
+      .auto-slider__body__items
+        if block
+          block
+    .auto-slider__mobile
+      if block
+        block
+
+mixin autoSliderItem(title, active=false, programBlock=false)
+  if active
+    - var classes = 'auto-slider__item active'
+  else 
+    - var classes = 'auto-slider__item'
+  div(class= classes)
+    .auto-slider__item__title= title
+    if programBlock
+      .auto-slider__item__description
+        | Прилет в Тривандрум, трансфер до йога-центра, знакомство, обзорная прогулка по Варкале, индивидуальная консультация врача-аюрведиста.
+    else
+      .auto-slider__item__description
+        | Всем, кто практикует йогу, рано или поздно захочется побывать в Индии - в далекой и загадочной стране, где и родилась эта наука о теле и душе.
+
+mixin scheduleItem(col)
+  - var n = 0 
+  while n < col
+    - var n = n + 1 
+    .schedule__item
+      .schedule__item__body
+        .schedule__item__date 5-18 октября
+        .schedule__item__title "Снижение веса"
+        a(href='#').schedule__item__details Читать подробнее
+        button.schedule__item__button ОСТАВИТЬ ЗАЯВКУ
+
+mixin instructorsSlider()
+  .instructors__slider._animation
+    .instructors__slider__body
+      if block
+        block
+    .instructors__slider__paginators
+
+mixin instructorsSliderItem(image, title, subtitle, description, active=false)
+  if active
+    - var classes = 'instructors__slider__item active'
+  else 
+    - var classes = 'instructors__slider__item'
+  div(class= classes)
+    img(src= image alt='slider image').instructors__slider__item__image
+    .instructors__slider__item__body
+      .instructors__slider__item__body__left
+        .instructors__slider__item__title !{title}
+        .instructors__slider__item__subtitle !{subtitle}
+      .instructors__slider__item__body__right
+        .instructors__slider__item__description !{description}
+  
+mixin feedbackSliderItem(image, title, subtitle, text)
+  .feedback__slider__item
+    .feedback__slider__item__image
+      img(src= image alt='slider image')
+    .feedback__slider__item__body
+      .feedback__slider__item__title= title 
+      .feedback__slider__item__subtitle= subtitle 
+      .feedback__slider__item__text= text
+
+doctype html
+html(lang='ru')
+  head
+    title yoga
+    meta(charset="UTF-8")
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  body
+    .loaded-screen
+      p.loaded-screen__text страница загружается...
+    header.header
+      .container
+        .header__top
+          .header__top__logo
+          .header__top__contact
+            p.header__top__contact-text бесплатный звонок по России
+            p.header__top__contact-phone 8 (800) 505-35-87
+        .header__center._animation
+          p.header__center__title Йога-туры в Индию
+          p.header__center__description океан / йога / путешествия / аюрведа
+          p.header__center__location Индия, штат Керала, побережье океана
+          button.header__center__button Подать заявку
+        .header__social-icons
+          .social-icon.header__icon-vk
+          .social-icon.header__icon-fb
+          .social-icon.header__icon-ig
+    section.yoga-tour._animation
+      .container
+        .yoga-tour__image
+          img(src=require('./images/yoga-tour/1.png').default)
+        .yoga-tour__desc
+          .yoga-tour__desc__title Что такое 
+            br
+            span йога-тур?
+          .yoga-tour__desc__text Йога-тур – это новый вид туризма, когда с путешествием в другую страну сочетаются занятия по йоге. Вы отдыхаете на море, посещаете интересные места, несколько раз в день занимаетесь йогой и проводите отпуск в интересной компании. Теперь отдых стал интересным и полезным для тела и души.
+          .yoga-tour__desc__list
+            .yoga-tour__desc__list__row
+              .yoga-tour__icon.yoga-tour__icon-yoga
+              p.yoga-tour__desc__list__text йога
+            .yoga-tour__desc__list__row
+              .yoga-tour__icon.yoga-tour__icon-wave
+              p.yoga-tour__desc__list__text море
+            .yoga-tour__desc__list__row
+              .yoga-tour__icon.yoga-tour__icon-plane
+              p.yoga-tour__desc__list__text путешествие
+    section.reasons
+      +container('5 причин поехать в йога-тур')
+        .reasons__list._animation
+          .reasons__list__item
+            .reasons__list__item__image
+              img(src=require('./images/reasons/1.png').default)
+            .reasons__list__item__text 
+              | Провести отпуск нестандартно и интересно
+          .reasons__list__item
+            .reasons__list__item__image
+              img(src=require('./images/reasons/2.png').default)
+            .reasons__list__item__text 
+              | Погрузиться в культуру 
+              br
+              | Индии и узнать страну изнутри
+          .reasons__list__item
+            .reasons__list__item__image
+              img(src=require('./images/reasons/3.png').default)
+            .reasons__list__item__text Улучшить здоровье
+          .reasons__list__item
+            .reasons__list__item__image
+              img(src=require('./images/reasons/4.png').default)
+            .reasons__list__item__text 
+              | Избавиться от стрессов
+              br
+              | и «перезагрузиться»
+          .reasons__list__item
+            .reasons__list__item__image
+              img(src=require('./images/reasons/5.png').default)
+            .reasons__list__item__text 
+              | Отдохнуть в хорошей компании, найти единомышленников
+    section.journey.sectionSlider
+      +container('Что меня ждет в путешествии?')
+        +autoSlider('src/images/journey/1.png','src/images/journey/1.png src/images/journey/2.png src/images/journey/3.png')
+          +autoSliderItem('групповая медитация', true)
+          +autoSliderItem('аюрведическое лечение')
+          +autoSliderItem('красивый пляж')
+    section.schedule
+      +container('Расписание йога-туров')
+        .schedule__body._animation
+          .schedule__body__row
+            +scheduleItem(4)
+          .schedule__body__row
+            +scheduleItem(4)
+    section.program.sectionSlider
+      +container('Программа')
+        +autoSlider('src/images/program/1.png', 'src/images/program/1.png src/images/program/2.png src/images/program/3.png')
+          +autoSliderItem('1 день', true, true)
+          +autoSliderItem('2 день', false, true)
+          +autoSliderItem('3 день', false, true)
+    section.ayurveda
+      +container('Что такое аюрведа?')
+        .ayurveda__text._animation
+          p.ayurveda__text__paragraph
+            | Аюрведа - это древнейшая медицинская наука в мире, колоссальная технология восстановления сил, красоты и здоровья. Она зародилась на юге Индии 5000 лет назад и сейчас широко распространилась по миру. 
+          p.ayurveda__text__paragraph
+            | Аюрведа в последнее время стремительно набирает популярность в России и во всем мире.<br> Аюрведа лечит весь организм в целом, восстанавливает нарушенный баланс между его частями, удаляя саму причину болезни. Цель аюрведического метода лечения - укрепление иммунной системы организма, профилактика и лечение заболеваний с помощью натуральных лекарств, не имеющих побочных эффектов.
+        .ayurveda__program
+          .ayurveda__title._animation Программа аюрведы на 5 дней, 7 дней или 12 дней:
+          .ayurveda__program__list
+            .ayurveda__program__item._animation
+              .ayurveda__program__item__image 
+                img(src= require('./images/ayurveda/1.png').default)
+              .ayurveda__program__item__text
+                | индивидуальная консультация врача-аювредиста<br>с переводом на русский язык, индивидуальное<br>наблюдение за курсом лечения врачом-аюрведистом
+            .ayurveda__program__item._animation
+              .ayurveda__program__item__image 
+                img(src= require('./images/ayurveda/2.png').default)
+              .ayurveda__program__item__text
+                | масляный массаж всего тела ежедневно<br>(60 минут) в 2 руки или в 4 руки
+            .ayurveda__program__item._animation
+              .ayurveda__program__item__image 
+                img(src= require('./images/ayurveda/3.png').default)
+              .ayurveda__program__item__text
+                | две аюрведические процедуры ежедневно<br>по Вашему индивидуальному курсу лечения
+            .ayurveda__program__item._animation
+              .ayurveda__program__item__image 
+                img(src= require('./images/ayurveda/4.png').default)
+              .ayurveda__program__item__text
+                | все медицинские препараты и масла в ходе процедур, одежда для процедур
+            .ayurveda__program__item._animation
+              .ayurveda__program__item__image 
+                img(src= require('./images/ayurveda/5.png').default)
+              .ayurveda__program__item__text
+                | итоговая консультация врача-аюрведиста<br>с планом продолжения приема препаратов дома, рекомендаций по диете
+        .ayurveda__center
+          .ayurveda__images._animation
+            .ayurveda__images__body
+              img(src= require('./images/ayurveda/center/1.png').default)
+              img(src= require('./images/ayurveda/center/2.png').default)
+              img(src= require('./images/ayurveda/center/3.png').default)
+              img(src= require('./images/ayurveda/center/4.png').default)
+              img(src= require('./images/ayurveda/center/5.png').default)
+              img(src= require('./images/ayurveda/center/6.png').default)
+              img(src= require('./images/ayurveda/center/7.png').default)
+              img(src= require('./images/ayurveda/center/8.png').default)
+              img(src= require('./images/ayurveda/center/9.png').default)
+              img(src= require('./images/ayurveda/center/10.png').default)
+              img(src= require('./images/ayurveda/center/11.png').default)
+              img(src= require('./images/ayurveda/center/12.png').default)
+          .ayurveda__content._animation
+            .ayurveda__content__title Аюрведический центр
+            .ayurveda__content__subtitle Индия, штат Керала, город Варкала
+            .ayurveda__content__text
+              p.ayurveda__content__text__paragraph
+                | Мы будем жить не просто в отеле, а в специализированном аюрведическом центре «Алисера». Здесь все проходят лечение или занимаются йогой – это тихое и закрытое для посторонних отдыхающих людей местечко.
+              p.ayurveda__content__text__paragraph
+                | Центр находится на первой пляжной линии в зеленом и спокойном месте, поодаль от шумных баров и магазинов. 
+              p.ayurveda__content__text__paragraph
+                | Этот аюрведический центр уже 5 лет администрируют русские специалисты - это значит, что они стараются обеспечить сервис на уровне, привычном русскому туристу. Вас не шокирует грязь и антисанитария Индии, которой многие боятся, не будет недопониманий с персоналом, еда будет адаптирована для привычного вкуса русского туриста и т.д. В центре постоянно есть переводчик с английского на русский язык. Отдыхают здесь в основном гости из России – поэтому всегда можно найти интересное общение, если вы приехали один или маленькой компанией. 
+            .ayurveda__content__list
+              ul.ayurveda__content__list__left
+                each val in ['комнаты категории «стандарт» и «повышенной комфортности» с санузлом и горячей водой', 'собственная территория с пальмами, гамаками и зонами для отдыха', 'бассейн', 'крытый зал для йоги', 'вегетарианское аюрведическое кафе', 'аюрведические кабинеты', 'собственный пляж']
+                  li.ayurveda__content__list__item= val
+              ul.ayurveda__content__list__right
+                each val in ['Wi-Fi на всей территории бесплатно', 'русскоговорящий администратор', 'туристический офис - билеты, экскурсии и т.д.', 'круглосуточно врач', 'аренда скутеров', 'заказ такси', 'сейф']
+                  li.ayurveda__content__list__item= val
+    section.instructors
+      +container('Инструкторы')
+        .instructors__sliders
+          +instructorsSlider()
+            +instructorsSliderItem(
+              require('./images/instructors/1.png').default,
+              'Юлия Ухваткина',
+              'Хатха-йога<br>Шри-шри йога',
+              'Международный индийский сертификат учителя йоги: VED VIGNAN MAHA VIDYA PEETH.<br>Ежегодно проходит курсы повышения квалификации в России и в Индии.<br>Переводчик с английского языка',
+              true
+            )
+            +instructorsSliderItem(
+              require('./images/instructors/2.png').default,
+              'Сем Джон',
+              'Индия. Шри-шри йога.<br>Курс «Счастье»',
+              'Более 10 лет ведет тренинги по йоге по всей Индии.<br>С 2009-го года преподаватель йоги международного фонда Art of living.<br>Обучает пранаяме, дыхательным техникам и медитации.<br>Читает лекции о теории и философии йоги.'
+            )
+            +instructorsSliderItem(
+              require('./images/instructors/1.png').default,
+              'Юлия Ухваткина',
+              'Хатха-йога<br>Шри-шри йога',
+              'Международный индийский сертификат учителя йоги: VED VIGNAN MAHA VIDYA PEETH.<br>Ежегодно проходит курсы повышения квалификации в России и в Индии.<br>Переводчик с английского языка'
+            )
+            +instructorsSliderItem(
+              require('./images/instructors/2.png').default,
+              'Сем Джон',
+              'Индия. Шри-шри йога.<br>Курс «Счастье»',
+              'Более 10 лет ведет тренинги по йоге по всей Индии.<br>С 2009-го года преподаватель йоги международного фонда Art of living.<br>Обучает пранаяме, дыхательным техникам и медитации.<br>Читает лекции о теории и философии йоги.'
+            )
+          +instructorsSlider()
+            +instructorsSliderItem(
+              require('./images/instructors/2.png').default,
+              'Сем Джон',
+              'Индия. Шри-шри йога.<br>Курс «Счастье»',
+              'Более 10 лет ведет тренинги по йоге по всей Индии.<br>С 2009-го года преподаватель йоги международного фонда Art of living.<br>Обучает пранаяме, дыхательным техникам и медитации.<br>Читает лекции о теории и философии йоги.',
+              true
+            )
+            +instructorsSliderItem(
+              require('./images/instructors/1.png').default,
+              'Юлия Ухваткина',
+              'Хатха-йога<br>Шри-шри йога',
+              'Международный индийский сертификат учителя йоги: VED VIGNAN MAHA VIDYA PEETH.<br>Ежегодно проходит курсы повышения квалификации в России и в Индии.<br>Переводчик с английского языка'
+            )
+            +instructorsSliderItem(
+              require('./images/instructors/2.png').default,
+              'Сем Джон',
+              'Индия. Шри-шри йога.<br>Курс «Счастье»',
+              'Более 10 лет ведет тренинги по йоге по всей Индии.<br>С 2009-го года преподаватель йоги международного фонда Art of living.<br>Обучает пранаяме, дыхательным техникам и медитации.<br>Читает лекции о теории и философии йоги.'
+            )
+    section.feedback
+      +container('Отзывы участников')
+        .feedback__slider._animation
+          .feedback__slider__control-left.slider-control
+          .feedback__slider__body
+            .feedback__slider__wrapper
+              +feedbackSliderItem(
+                require('./images/feedback/1.png').default,
+                'Дмитрий Жигарев', 
+                'vk.com/zhigarev_dmitrii',
+                'Мне, как всегда в этой жизни везет на встречи с интересными людьми. Было очень приятно попасть в такую хорошую компанию искренних, позитивных и интересных людей. Индия классная страна… интересно было соприкоснуться с такой культурой. Иногда она шокирует, иногда вызывают улыбку и удивление, но я пожелал бы каждому побывать в этой экстраординарной стране. Я отдохнул и душой и телом. Постараюсь приехать туда еще не раз…'
+              )
+              +feedbackSliderItem(
+                require('./images/feedback/1.png').default,
+                'Жигарев Дмитрий', 
+                'vk.com/zhigarev_dmitrii',
+                'Мне, как всегда в этой жизни везет на встречи с интересными людьми. Было очень приятно попасть в такую хорошую компанию искренних, позитивных и интересных людей. Индия классная страна… интересно было соприкоснуться с такой культурой. Иногда она шокирует, иногда вызывают улыбку и удивление, но я пожелал бы каждому побывать в этой экстраординарной стране. Я отдохнул и душой и телом. Постараюсь приехать туда еще не раз…'
+              )
+              +feedbackSliderItem(
+                require('./images/feedback/1.png').default,
+                'Павел Дуров', 
+                'vk.com/zhigarev_dmitrii',
+                'Мне, как всегда в этой жизни везет на встречи с интересными людьми. Было очень приятно попасть в такую хорошую компанию искренних, позитивных и интересных людей. Индия классная страна… интересно было соприкоснуться с такой культурой. Иногда она шокирует, иногда вызывают улыбку и удивление, но я пожелал бы каждому побывать в этой экстраординарной стране. Я отдохнул и душой и телом. Постараюсь приехать туда еще не раз…'
+              )
+          .feedback__slider__control-right.slider-control.slider-control__show
+        .feedback__slider__paginators._animation
+    section.advantages
+      +container('Почему 1620 туристов выбрали нас')
+        .advantages__body._animation
+          .advantages__item
+            .advantages__item__image
+              img(src= require('./images/advantages/1.png').default alt='advantages')
+            .advantages__item__title Опыт
+            .advantages__item__text 
+              | За 5 лет работы мы открыли<br>мир йоги для более чем<br>1620 туристов
+          .advantages__item
+            .advantages__item__image
+              img(src= require('./images/advantages/2.png').default alt='advantages')
+            .advantages__item__title С нами спокойно
+            .advantages__item__text 
+              | Русскоговорящее<br>сопровождение –<br>инструктор и переводчик<br>будет с вами в течении всего тура
+          .advantages__item
+            .advantages__item__image
+              img(src= require('./images/advantages/3.png').default alt='advantages')
+            .advantages__item__title Мы — профессионалы
+            .advantages__item__text 
+              | Мы — самая большая<br>компания в России,<br>которая занимается<br>исключительно йога-турами
+          .advantages__item
+            .advantages__item__image
+              img(src= require('./images/advantages/4.png').default alt='advantages')
+            .advantages__item__title С нами выгодно
+            .advantages__item__text 
+              | Наш принцип – делать<br>цены на йога-туры<br>доступными для всех
+          .advantages__item
+            .advantages__item__image
+              img(src= require('./images/advantages/5.png').default alt='advantages')
+            .advantages__item__title С нами безопасно
+            .advantages__item__text 
+              | Вы получаете весь пакет<br>официальных<br>туристических документов
+          .advantages__item
+            .advantages__item__image
+              img(src= require('./images/advantages/6.png').default alt='advantages')
+            .advantages__item__title С нами удобно
+            .advantages__item__text 
+              | Мы поможем забронировать<br>авиа-билеты<br>и оформить визу
+    section.plan
+      +container('Как мы работаем')
+        .plan__subtitle._animation Возможно оформление йога-тура дистанционно из любого города
+        .plan__list._animation
+          .plan__item
+            .plan__item__image
+              img(src= require('./images/plan/1.png').default alt='plan')
+            .plan__item__text 
+              | Вы оставляете заявку<br>
+              a(href='#') Отправить заявку
+          .plan__arrow
+          .plan__item
+            .plan__item__image
+              img(src= require('./images/plan/2.png').default alt='plan')
+            .plan__item__text Мы связываемся<br>с вами
+          .plan__arrow
+          .plan__item
+            .plan__item__image
+              img(src= require('./images/plan/3.png').default alt='plan')
+            .plan__item__text Подписываем договор<br>и оформляем<br>документы
+          .plan__arrow
+          .plan__item
+            .plan__item__image
+              img(src= require('./images/plan/4.png').default alt='plan')
+            .plan__item__text Вы оплачиваете аванс<br>6 000 рублей<br>в банке
+          .plan__arrow
+          .plan__item
+            .plan__item__image
+              img(src= require('./images/plan/5.png').default alt='plan')
+            .plan__item__text Покупаете билеты<br>и оформляете визу<br>(возможно через нас)
+          .plan__arrow
+          .plan__item
+            .plan__item__image
+              img(src= require('./images/plan/5.png').default alt='plan')
+            .plan__item__text Вас встречают<br>в аэропорту Тривандрум<br>с табличкой
+    section.price
+      +container('Стоимость')
+        .price__table._animation
+          .price__table__body
+            .price__table__row
+              .price__table__row__text 
+                span.font-Bold Тур 14 дней/13 ночей, 
+                | программа аюрведы на 5 дней
+              .price__table__row__value 
+                span.font-Bold 700 
+                | евро
+            .price__table__row
+              .price__table__row__text 
+                span.font-Bold Тур 14 дней/13 ночей, 
+                | программа аюрведы на 7 дней
+              .price__table__row__value 
+                span.font-Bold 770 
+                | евро
+            .price__table__row
+              .price__table__row__text 
+                span.font-Bold Тур 14 дней/13 ночей, 
+                | программа аюрведы на 12 дней
+              .price__table__row__value 
+                span.font-Bold 960 
+                | евро
+          .price__table__footer
+            .price__table__footer__text
+              | Узнайте о спецпредложении эконом-тур за 250 евро
+            button.price__table__footer__button УЗНАТЬ
+        .price__included.price-list._animation
+          .price__title В стоимость включено:
+          ul.price-list__body
+            each val in ['проживание двухместное в комнате "стандарт" с санузлом и горячей водой,', 'питание трехразовое вегетарианское,', 'йога-программа - 3 занятия йоги в день (практика и теория),', 'аюрведическая программа на 5 дней, 7 дней или 12 дней, ', 'индивидуальный трансфер на такси из аэропорта до отеля и обратно,', 'сопровождение группы русскоговорящим преподавателем,', 'теоретические занятия по аюрведе,', 'две экскурсии']
+              li.price-list__body__item= val
+        .price__not-included.price-list._animation
+          .price__title В стоимость включено:
+          ul.price-list__body
+            each val in ['перелет Москва-Тируванантапурам-Москва (от 20 000 рублей)', 'виза (3000 рублей)']
+              li.price-list__body__item= val
+        .price__text._animation Стоимость рассчитывается в евро из-за нестабильного курса рубля. Оплата на месте возможна в любой валюте – рубли, евро, доллары. 
+    section.guarantees
+      +container('Гарантия безопасности')
+        .guarantees__subtitle._animation
+          | Мы понимаем, что многие туристы опасаются оплачивать туры и боятся, что тур отменится. Поэтому мы сделали бронирование безопасным для вас. Чтобы забронировать место на йога-туре необходимо любым удобным способом внести аванс 6000 рублей. Оставшуюся сумму вы оплачиваете в любой валюте (рубли, евро, доллары) по прибытию в отель, после заселения. 
+        .guarantees__title._animation Вы получите полный набор документов:
+        .guarantees__list._animation
+          .guarantees__item
+            .guarantees__item__image
+              img(src= require('./images/guarantees/1.png').default alt='guarantees')
+            .guarantees__item__text Договор на оказание услуг
+          .guarantees__item
+            .guarantees__item__image
+              img(src= require('./images/guarantees/2.png').default alt='guarantees')
+            .guarantees__item__text Чек об оплате аванса
+          .guarantees__item
+            .guarantees__item__image
+              img(src= require('./images/guarantees/3.png').default alt='guarantees')
+            .guarantees__item__text Бронь отеля
+          .guarantees__item
+            .guarantees__item__image
+              img(src= require('./images/guarantees/4.png').default alt='guarantees')
+            .guarantees__item__text Туристический сертификат
+    section.contacts
+      .container
+        .contacts__title._animation Контакты
+        .contacts__row._animation
+          .contacts__social
+            .contacts__subtitle Мы в социальных сетях:
+            .contacts__social__list
+              button.contacts__social__button.contacts__social-vk
+              button.contacts__social__button.contacts__social-fb
+              button.contacts__social__button.contacts__social-ig
+          .contacts__phone
+            .contacts__subtitle Телефон:
+            .contacts__phone__subtitle Звонки со всех номеров РФ бесплатно
+            .contacts__phone__number 8 800 505 35 87
+        .contacts__maps._animation
+          .contacts__subtitle Офисы:
+          .contacts__maps__list
+            .contacts__maps__item
+              .contacts__maps__item__image
+                img(src= require('./images/contacts/1.png').default alt='contacts')
+              .contacts__maps__item__text Екатеринбург, ул Вайнера 60
+            .contacts__maps__item
+              .contacts__maps__item__image
+                img(src= require('./images/contacts/2.png').default alt='contacts')
+              .contacts__maps__item__text Санкт-Петербург, пер. Литейный 29
+            .contacts__maps__item
+              .contacts__maps__item__image
+                img(src= require('./images/contacts/3.png').default alt='contacts')
+              .contacts__maps__item__text Сочи, ул Декабристов 161/2
+    footer.footer
+      .container
+        .footer__logo
+        .footer__text 
+          | Все наши йога-туры на главном сайте<br>
+          a(href='#').footer__link www.google.com

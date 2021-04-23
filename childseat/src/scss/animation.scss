@@ -1,0 +1,31 @@
+.header {
+  transform-style: preserve-3d;
+  perspective: 100px;
+  .logo, .header__callback {
+    animation: no-transform 2s .5s cubic-bezier(0, 0.5, 0, 1) forwards;
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+}
+
+.main {
+  transform-style: preserve-3d;
+  perspective: 100px;
+  .main__title, .main__description {
+    animation: no-transform 1s .5s cubic-bezier(0, 0.5, 0, 1) forwards;
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  .main__banner {
+    animation: no-transform 1s .7s cubic-bezier(0, 0.5, 0, 1) forwards;
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}
+
+@keyframes no-transform {
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

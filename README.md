@@ -1,6 +1,6 @@
 # abirato.github.io
 
-demos:
-(abirato.github.io/yoga/dist)
-(abirato.github.io/doma/dist)
-(abirato.github.io/childseat/dist)
+верстка:
+[1: yoga](abirato.github.io/yoga/dist)
+[2: doma](abirato.github.io/doma/dist)
+[3: childseat](abirato.github.io/childseat/dist)
